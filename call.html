@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<div>
+   Excersize: <input type="text" id='txt_Excersize'> <br>
+   
+   <input type="button" id="btn_submit" value="Submit" onclick="Send();">
+</div>
+<div >
+  <label id="result"></label>
+</div>
+
+<script>
+function Send() {
+
+  var excersize = document.getElementById('txt_Excersize').value;
+ 
+  
+
+ 
+
+     var data = {Text: excersize};
+     var xhttp = new XMLHttpRequest();
+     xhttp.onload = function () {
+    // do something to response
+    document.getElementById('result').innerHTML = this.responseText;
+        console.log(this.responseText);
+    };
+     // Set POST method and ajax file path
+     xhttp.open("POST", "http://localhost:32966/api/Calculator/Calculate", true);
+        
+     // call on request changes state
+    
+     
+
+     // Content-type
+     xhttp.setRequestHeader("Content-Type", "application/json");
+     //xhttp.send();
+     // Send request with data
+     xhttp.send(JSON.stringify(data));
+  }
+
+document.getElementById("demo").innerHTML = "My First JavaScript";
+</script>
+
+</body>
+</html> 
